@@ -1,5 +1,5 @@
+import 'package:ageflux/modules/home/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,11 +8,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(child: Text("AgeFlux")),
-      ),
+      home: HomeScreen(),
     );
   }
 }
