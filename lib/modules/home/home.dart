@@ -37,32 +37,49 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          color: const Color(0xff2A9D8E),
+          color: const Color(0xff2C3E50),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
             children: [
-              const Text(
-                "Enter Your Birth-date ",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 120),
+                child: Column(
+                  children: const [
+                    Text(
+                      "Date of Birth",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      "Enter your date of birth ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 48),
                 child: Row(
                   children: [
                     Expanded(
                       flex: 1,
                       child: DefaultInput(
-                          type: TextInputType.number,
-                          title: "Day",
-                          backgroundColor: Colors.white),
+                        type: TextInputType.number,
+                        title: "Day",
+                        backgroundColor: Colors.white,
+                        radius: 6,
+                      ),
                     ),
                     const SizedBox(
-                      width: 24,
+                      width: 16,
                     ),
                     Expanded(
                         flex: 2,
@@ -75,12 +92,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               });
                             })),
                     const SizedBox(
-                      width: 24,
+                      width: 16,
                     ),
                     Expanded(
                       flex: 1,
                       child: DefaultInput(
-                          title: "Year", backgroundColor: Colors.white),
+                        title: "Year",
+                        type: TextInputType.number,
+                        backgroundColor: Colors.white,
+                      ),
                     ),
                   ],
                 ),
@@ -93,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
         isExtended: true,
         elevation: 0,
         hoverElevation: 0,
-        backgroundColor: const Color(0xff16B4A3),
+        backgroundColor: const Color(0xff2D9FDA),
         onPressed: () {},
         child: const Icon(Icons.keyboard_arrow_right),
       ),

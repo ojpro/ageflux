@@ -6,30 +6,41 @@ Widget DefaultInput({
   TextInputType type = TextInputType.text,
   double width = double.infinity,
   Color backgroundColor = Colors.transparent,
+  double radius = 4,
 }) =>
     SizedBox(
       width: width,
+      height: 46,
       child: TextFormField(
-        minLines: 1,
+        expands: false,
         keyboardType: type,
         decoration: InputDecoration(
           hintText: title,
           filled: true,
           fillColor: backgroundColor,
-          focusedBorder: RoundedInput(radius: 8),
-          enabledBorder: RoundedInput(color: Colors.white24, radius: 8),
+          focusedBorder: RoundedInput(radius: radius + 2),
+          enabledBorder: RoundedInput(
+            color: Colors.white24,
+            radius: radius,
+          ),
         ),
       ),
     );
 
-Widget DefaultDropdown(
-        {required String initial,
-        required List items,
-        required Function onChange}) =>
+Widget DefaultDropdown({
+  required String initial,
+  required List items,
+  required Function onChange,
+  double radius = 4,
+  double width = double.infinity,
+  double height = 46,
+}) =>
     Container(
+      width: width,
+      height: height,
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(6)),
+          color: Colors.white, borderRadius: BorderRadius.circular(radius)),
       child: DropdownButton(
         focusColor: Colors.blueAccent,
         underline: Container(height: 0),
