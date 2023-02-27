@@ -1,4 +1,4 @@
-import 'package:ageflux/shared/components/borders.dart';
+import 'package:ageflux/modules/insight/details.dart';
 import 'package:ageflux/shared/components/inputs.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> months = [];
   String selectedMonth = "";
+
+  // Inputs Controller
+  TextEditingController dayInput = TextEditingController();
+  TextEditingController yearInput = TextEditingController();
+
+  int monthInput = 0;
 
   @override
   void initState() {
@@ -72,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       flex: 1,
                       child: DefaultInput(
+                        controller: dayInput,
                         type: TextInputType.number,
                         title: "Day",
                         backgroundColor: Colors.white,
@@ -89,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onChange: (value) {
                               setState(() {
                                 selectedMonth = value;
+                                monthInput = months.indexOf(selectedMonth) + 1;
                               });
                             })),
                     const SizedBox(
@@ -97,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       flex: 1,
                       child: DefaultInput(
+                        controller: yearInput,
                         title: "Year",
                         type: TextInputType.number,
                         backgroundColor: Colors.white,
@@ -114,7 +123,17 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         hoverElevation: 0,
         backgroundColor: const Color(0xff2D9FDA),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: ((context) => DetailsScreen(
+                    day: int.parse(dayInput.text),
+                    month: monthInput,
+                    year: int.parse(yearInput.text),
+                  )),
+            ),
+          );
+        },
         child: const Icon(Icons.keyboard_arrow_right),
       ),
     );

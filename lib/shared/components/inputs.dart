@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 Widget DefaultInput({
   required title,
+  required TextEditingController controller,
   TextInputType type = TextInputType.text,
   double width = double.infinity,
   Color backgroundColor = Colors.transparent,
@@ -12,6 +13,7 @@ Widget DefaultInput({
       width: width,
       height: 46,
       child: TextFormField(
+        controller: controller,
         expands: false,
         keyboardType: type,
         decoration: InputDecoration(
