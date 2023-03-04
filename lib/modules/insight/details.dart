@@ -23,10 +23,16 @@ class DetailsScreen extends StatelessWidget {
           }),
         ),
         title: const Text("AgeFlux"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.help),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(36),
+          padding: const EdgeInsets.all(24),
           decoration: const BoxDecoration(
             color: Color(0xff2C3E50),
           ),
@@ -42,10 +48,8 @@ class DetailsScreen extends StatelessWidget {
                     "You Lived",
                     style: TextStyle(color: Colors.white),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
                   Container(
+                    margin: const EdgeInsets.only(top: 8, bottom: 24),
                     padding: const EdgeInsets.all(12),
                     width: double.infinity,
                     decoration: const BoxDecoration(
@@ -64,9 +68,6 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 24,
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -74,10 +75,8 @@ class DetailsScreen extends StatelessWidget {
                     "Deep Dive",
                     style: TextStyle(color: Colors.white),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
                   Container(
+                    margin: const EdgeInsets.only(top: 8, bottom: 24),
                     padding: const EdgeInsets.all(16),
                     width: double.infinity,
                     decoration: const BoxDecoration(
@@ -202,9 +201,6 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 24,
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -212,10 +208,8 @@ class DetailsScreen extends StatelessWidget {
                     "Next birthday after",
                     style: TextStyle(color: Colors.white),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
                   Container(
+                    margin: const EdgeInsets.only(top: 8, bottom: 24),
                     padding: const EdgeInsets.all(12),
                     width: double.infinity,
                     decoration: const BoxDecoration(
@@ -234,9 +228,6 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 24,
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -244,10 +235,8 @@ class DetailsScreen extends StatelessWidget {
                     "More Details",
                     style: TextStyle(color: Colors.white),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
                   Container(
+                    margin: const EdgeInsets.only(top: 8, bottom: 24),
                     padding: const EdgeInsets.all(24),
                     width: double.infinity,
                     decoration: const BoxDecoration(
