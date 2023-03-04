@@ -1,3 +1,5 @@
+import 'package:ageflux/models/dater.dart';
+import 'package:ageflux/models/strings.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -25,7 +27,24 @@ class DetailsScreen extends StatelessWidget {
         title: const Text("AgeFlux"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      actions: [
+                        MaterialButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Close"),
+                        )
+                      ],
+                      title: const Text("AgeFlux"),
+                      content: const Text("Simple & Easy Age Calculator"),
+                    );
+                  });
+            },
             icon: const Icon(Icons.help),
           ),
         ],
@@ -58,10 +77,10 @@ class DetailsScreen extends StatelessWidget {
                         Radius.circular(4),
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "20 years, 7 months and 17 days",
-                        style: TextStyle(
+                        Dater.calculateAge(birthDate()),
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
@@ -89,16 +108,17 @@ class DetailsScreen extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
+                          children: [
+                            const Text(
                               "Months",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              "247",
-                              style: TextStyle(
+                              StringUtils.addCommas(
+                                  Dater.calculateAgeInMonths(birthDate())),
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -112,16 +132,41 @@ class DetailsScreen extends StatelessWidget {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
+                            const Text(
+                              "Weeks",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                             Text(
+                              StringUtils.addCommas(
+                                  Dater.calculateAgeInWeeks(birthDate())),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          height: 1,
+                          width: double.infinity,
+                          margin: const EdgeInsets.all(14),
+                          color: const Color(0xffEEEEEE),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
                               "Days",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              "7,537",
-                              style: TextStyle(
+                              StringUtils.addCommas(
+                                  Dater.calculateAgeInDays(birthDate())),
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -135,16 +180,17 @@ class DetailsScreen extends StatelessWidget {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
+                          children: [
+                            const Text(
                               "Hours",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              "180,888",
-                              style: TextStyle(
+                              StringUtils.addCommas(
+                                  Dater.calculateAgeInHours(birthDate())),
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -158,16 +204,17 @@ class DetailsScreen extends StatelessWidget {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
+                          children: [
+                            const Text(
                               "Minutes",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              "10,853,280",
-                              style: TextStyle(
+                              StringUtils.addCommas(
+                                  Dater.calculateAgeInMinutes(birthDate())),
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -181,16 +228,17 @@ class DetailsScreen extends StatelessWidget {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
+                          children: [
+                            const Text(
                               "Seconnds",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              "651,196,800",
-                              style: TextStyle(
+                              StringUtils.addCommas(
+                                  Dater.calculateAgeInSeconds(birthDate())),
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -218,10 +266,10 @@ class DetailsScreen extends StatelessWidget {
                         Radius.circular(4),
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "4 months & 2 weeks (133 days) on Sunday",
-                        style: TextStyle(
+                        Dater.calculateNextBirthdate(birthDate()),
+                        style: const TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 15),
                       ),
                     ),
@@ -261,4 +309,13 @@ class DetailsScreen extends StatelessWidget {
       ),
     );
   }
+
+  DateTime birthDate() {
+    return DateTime(year, month, day);
+  }
+
+  // String formatedAge() {
+  //   var date = Dater.calculateAge(birthDate());
+  //   return "${date['years']} years, ${date['months']} months and ${date['days']} days";
+  // }
 }
